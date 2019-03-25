@@ -10,6 +10,7 @@ Java virtual machine version 1.8 and latest version of maven
 You can run with following commands: <br>
 open command prompt and go to the folder where you extracted the project.
 We name the folder as %PROJECT_HOME%
+Create a folder by name asciidoc in %PROJECT_HOME%\src\main
 %PROJECT_HOME%>mvn clean install
 After you have run the above command.
 
