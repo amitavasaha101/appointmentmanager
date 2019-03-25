@@ -1,0 +1,145 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "0.0.1",
+    "title": "Appointment Management",
+    "description": "The appointment management API performs appointment creation for two types of appointments, namely -\nToDo and Followup.\n",
+    "contact": {
+      "name": "Amitava Saha",
+      "email": "amitava.saha@infosys.com",
+      "url": "http://www.infosys.com"
+    }
+  },
+  "host": "localhost:8500",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "definitions": {
+    "Appointment": {
+      "properties": {
+        "appointmentId": {
+          "type": "integer"
+        },
+        "appointmentDate": {
+          "type": "string",
+          "description": "date in dd-mm-yyyy format"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "time in hh24:mm format"
+        },
+        "endTime": {
+          "type": "string",
+          "description": "time in hh24:mm format"
+        },
+        "subject": {
+          "type": "string",
+          "description": "subject of the appointment"
+        },
+        "details": {
+          "type": "string",
+          "description": "appointment detailed description"
+        },
+        "appointmentType": {
+          "type": "string",
+          "description": "Todo or Followup or both"
+        },
+        "username": {
+          "type": "string",
+          "description": "user for whom the appointment has to be created"
+        }
+      }
+    },
+    "ErrorMessage": {
+      "properties": {
+        "message": {
+          "type": "string",
+          "description": "descriptive message explaining the error state."
+        }
+      }
+    }
+  },
+  "paths": {
+    "appointment/all": {
+      "get": {
+        "summary": "Get appointments",
+        "description": "Gets list of `Appointment` objects for the user\nBased on the query parameter of **username**.\n",
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "description": "user for which list of appointments are to be displayed.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with a list of appointments",
+            "schema": {
+              "title": "ArrayOfAppointments",
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Appointment"
+              }
+            }
+          },
+          "404": {
+            "description": "This http response is returned if there aren't any appointments for the user.",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessage"
+            }
+          },
+          "500": {
+            "description": "This http response is returned if there is an internal server error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessage"
+            }
+          }
+        }
+      }
+    },
+    "appointment/createAppointment": {
+      "post": {
+        "summary": "Create one or more appointments",
+        "description": "Creates one or more appointments based on the request received from user.",
+        "parameters": [
+          {
+            "name": "Appointment",
+            "schema": {
+              "$ref": "#/definitions/Appointment"
+            },
+            "in": "body"
+          }
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with appointmentId created.",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessage"
+            }
+          },
+          "400": {
+            "description": "This http response is returned if the specified request is invalid.",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessage"
+            }
+          },
+          "500": {
+            "description": "This http response is returned if there is an internal server error.",
+            "schema": {
+              "$ref": "#/definitions/ErrorMessage"
+            }
+          }
+        }
+      }
+    }
+  }
+}
