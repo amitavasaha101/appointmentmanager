@@ -13,7 +13,7 @@ info:
    url: http://www.infosys.com
 host:  
   localhost:8500
-basePath: /
+basePath: /appointment
 schemes:
   - http
 definitions:
@@ -50,7 +50,7 @@ definitions:
 # Describe your paths here
 paths:
   # This is a view appointments endpoint.
-  appointment/all:
+  /all:
     get:
       summary: Get appointments
       description: |
@@ -84,7 +84,7 @@ paths:
           description: This http response is returned if there is an internal server error.
           schema:
             $ref: '#/definitions/ErrorMessage'
-  appointment/createAppointment:
+  /createAppointment:
     post:
       summary: Create one or more appointments
       description: Creates one or more appointments based on the request received from user.
