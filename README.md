@@ -20,3 +20,4 @@ After you have run the above command. <br>
 The application would start on port 8500 <br>
 Refer to the swagger document to test the application. <br>
 The swagger documents are available at %PROJECT_HOME%\src\main\resources\ <br>
+You may also refer to POSTMAN.MD on instructions to test with POSTMAN.
