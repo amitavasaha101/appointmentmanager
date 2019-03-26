@@ -1,4 +1,4 @@
-#Appointment Management Project
+#Appointment Management Project<br>
 This service is used to view appointments for an user and to create new appointment for an user
 
 # Prerequisites
