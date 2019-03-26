@@ -11,7 +11,7 @@
     }
   },
   "host": "localhost:8500",
-  "basePath": "/",
+  "basePath": "/appointment",
   "schemes": [
     "http"
   ],
@@ -61,7 +61,7 @@
     }
   },
   "paths": {
-    "appointment/all": {
+    "/all": {
       "get": {
         "summary": "Get appointments",
         "description": "Gets list of `Appointment` objects for the user\nBased on the query parameter of **username**.\n",
@@ -103,7 +103,7 @@
         }
       }
     },
-    "appointment/createAppointment": {
+    "/createAppointment": {
       "post": {
         "summary": "Create one or more appointments",
         "description": "Creates one or more appointments based on the request received from user.",
